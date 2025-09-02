@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f0f0f0;
+}
+
+.rosco {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 20px auto;
+  border-radius: 50%;
+}
+
+.letra {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #3498db;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.correcta { background: #2ecc71 !important; }
+.incorrecta { background: #e74c3c !important; }
+.pasada { background: #f1c40f !important; }
