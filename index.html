@@ -9,9 +9,13 @@
   <h1>Rosco Pasapalabra</h1>
   <div class="rosco" id="rosco"></div>
   <div class="pregunta" id="pregunta"></div>
-  <input type="text" id="respuesta" placeholder="Escribe tu respuesta">
-  <button onclick="comprobar()">Responder</button>
-  <button onclick="pasar()">Pasapalabra</button>
+  
+  <div id="controles">
+    <button onclick="marcar('acierto')">✅ Acierto</button>
+    <button onclick="marcar('fallo')">❌ Fallo</button>
+    <button onclick="marcar('pasapalabra')">➡️ Pasapalabra</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

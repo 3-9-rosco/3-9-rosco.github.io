@@ -28,7 +28,6 @@ const preguntas = {
   "X": { pregunta: "Con la X: Jugador que marcó a Héctor Helio solito.", respuesta: "xavier" },
   "Y": { pregunta: "Con la Y: Citando a Marçal: 'QUE PUTO CÁNCER ME ESTÁN DANDO LAS PLANTAS DE LA...'.", respuesta: "zyra" },
   "Z": { pregunta: "Con la Z: Todas las exes de todos (real).", respuesta: "zorras" },
-  // ... que haces viendo esto maricón
 };
 
 let indice = 0;
@@ -37,20 +36,19 @@ let fallos = 0;
 
 const rosco = document.getElementById("rosco");
 const preguntaDiv = document.getElementById("pregunta");
-const inputRespuesta = document.getElementById("respuesta");
 
-// Dibujar letras en círculo
-const radius = 150;
+// Dibujar letras en círculo adaptado
+const radius = 40; // porcentaje del rosco
 letras.forEach((letra, i) => {
   const angle = (i / letras.length) * 2 * Math.PI;
-  const x = radius * Math.cos(angle) + 170;
-  const y = radius * Math.sin(angle) + 170;
+  const x = 45 + radius * Math.cos(angle); // porcentaje
+  const y = 45 + radius * Math.sin(angle); // porcentaje
   const div = document.createElement("div");
   div.className = "letra";
   div.id = "letra-" + letra;
   div.innerText = letra;
-  div.style.left = x + "px";
-  div.style.top = y + "px";
+  div.style.left = x + "%";
+  div.style.top = y + "%";
   rosco.appendChild(div);
 });
 
@@ -63,26 +61,50 @@ function mostrarPregunta() {
   } else {
     preguntaDiv.innerText = "Sin pregunta para " + letra;
   }
-  inputRespuesta.value = "";
-  inputRespuesta.focus();
 }
 
-function comprobar() {
+// 🔊 Reproducir sonidos (usando iframe oculto)
+function playSound(url) {
+  const iframe = document.createElement("iframe");
+  iframe.style.display = "none";
+  iframe.src = url;
+  document.body.appendChild(iframe);
+  setTimeout(() => iframe.remove(), 2000); // limpiar después de 2s
+}
+
+// 🔹 Pop-up animado
+function mostrarPopup(tipo, texto) {
+  const popup = document.createElement("div");
+  popup.className = `popup ${tipo}`;
+  popup.innerText = texto;
+  document.body.appendChild(popup);
+
+  void popup.offsetWidth; // forzar reflow
+  popup.classList.add("fade");
+
+  setTimeout(() => popup.remove(), 1000);
+}
+
+function marcar(tipo) {
   const letra = letras[indice];
-  const respuesta = inputRespuesta.value.trim().toLowerCase();
-  if (preguntas[letra] && respuesta === preguntas[letra].respuesta) {
-    document.getElementById("letra-" + letra).classList.add("correcta");
+  const letraDiv = document.getElementById("letra-" + letra);
+
+  if (tipo === "acierto") {
+    letraDiv.classList.add("correcta");
     aciertos++;
-  } else {
-    document.getElementById("letra-" + letra).classList.add("incorrecta");
+    mostrarPopup("acierto", "¡Correcto!");
+    playSound("https://www.myinstants.com/instant/iphone-notification-71441/embed/");
+  } else if (tipo === "fallo") {
+    letraDiv.classList.add("incorrecta");
     fallos++;
+    mostrarPopup("fallo", "¡Incorrecto!");
+    playSound("https://www.myinstants.com/instant/soy-retrasado-djmario-41742/embed/");
+  } else if (tipo === "pasapalabra") {
+    letraDiv.classList.add("pasada");
+    mostrarPopup("pasapalabra", "¡Pasapalabra!");
+    playSound("https://www.myinstants.com/instant/bruh/embed/");
   }
-  siguiente();
-}
 
-function pasar() {
-  const letra = letras[indice];
-  document.getElementById("letra-" + letra).classList.add("pasada");
   siguiente();
 }
 
@@ -90,7 +112,7 @@ function siguiente() {
   indice++;
   if (indice >= letras.length) {
     preguntaDiv.innerText = `Juego terminado ✅ Aciertos: ${aciertos}, Fallos: ${fallos}`;
-    inputRespuesta.style.display = "none";
+    document.getElementById("controles").style.display = "none";
   } else {
     mostrarPregunta();
   }
