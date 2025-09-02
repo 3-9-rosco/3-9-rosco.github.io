@@ -4,7 +4,7 @@ const preguntas = {
   "B": { pregunta: "Con la B: Versión del juego de Pokémon favorita de tanto Joel como Adrián.", respuesta: "blanco" },
   "C": { pregunta: "Con la C: Insulto racista dirigido a máquinas impulsadas por IA.", respuesta: "clanker" },
   "Ç": { pregunta: "Con la Ç: Plato típico catalán compuesto por una cebolla alargada servida con salsa romesco.", respuesta: "calçots" },
-  "D": { pregunta: "Con la D: Acción típica de Joel donde un aliado trata de asesinar a un enemigo debajo de su torre.", respuesta: "divear" },
+  "D": { pregunta: "Con la D: Acción típica de Joel donde un aliado trata de asesinar a un enemigo debajo de su torre (en infinitivo).", respuesta: "divear" },
   "E": { pregunta: "Con la E: Personaje en REPO que, tras verte, te persigue con dos cuchillas.", respuesta: "espantapajaros" },
   "F": { pregunta: "Con la F: Palabra favorita de Marçal en catalán.", respuesta: "forquilla" },
   "G": { pregunta: "Con la G: Tradición del grupo donde todos nos reunimos en Fin de Año a ver un video recopilatorio de nuestros clips.", respuesta: "gala" },
