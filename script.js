@@ -63,13 +63,10 @@ function mostrarPregunta() {
   }
 }
 
-// 🔊 Reproducir sonidos (usando iframe oculto)
-function playSound(url) {
-  const iframe = document.createElement("iframe");
-  iframe.style.display = "none";
-  iframe.src = url;
-  document.body.appendChild(iframe);
-  setTimeout(() => iframe.remove(), 2000); // limpiar después de 2s
+// 🔊 Reproducir sonidos locales
+function playSound(file) {
+  const audio = new Audio(file);
+  audio.play();
 }
 
 // 🔹 Pop-up animado
@@ -93,16 +90,16 @@ function marcar(tipo) {
     letraDiv.classList.add("correcta");
     aciertos++;
     mostrarPopup("acierto", "¡Correcto!");
-    playSound("https://www.myinstants.com/instant/iphone-notification-71441/embed/");
+    playSound("sounds/acierto.mp3");
   } else if (tipo === "fallo") {
     letraDiv.classList.add("incorrecta");
     fallos++;
     mostrarPopup("fallo", "¡Incorrecto!");
-    playSound("https://www.myinstants.com/instant/soy-retrasado-djmario-41742/embed/");
+    playSound("sounds/fallo.mp3");
   } else if (tipo === "pasapalabra") {
     letraDiv.classList.add("pasada");
     mostrarPopup("pasapalabra", "¡Pasapalabra!");
-    playSound("https://www.myinstants.com/instant/bruh/embed/");
+    playSound("sounds/pasapalabra.mp3");
   }
 
   siguiente();
