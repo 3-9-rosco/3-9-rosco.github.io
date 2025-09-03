@@ -88,15 +88,20 @@ function mostrarUncanny() {
   overlay.className = "overlay-uncanny";
 
   const img = document.createElement("img");
-  img.src = "joelserio.png"; // asegúrate de tener esta ruta
+  img.src = "joelserio.png"; // asegúrate de que joelserio.png esté en la misma carpeta
   img.className = "uncanny-img";
 
   overlay.appendChild(img);
   document.body.appendChild(overlay);
 
-  playSound("uncanny.mp3");
+  // Reproducir sonido
+  const audio = new Audio("uncanny.mp3");
+  audio.play();
 
-  setTimeout(() => overlay.remove(), 1000);
+  // Mantenerlo visible 3 segundos
+  setTimeout(() => {
+    overlay.remove();
+  }, 3000);
 }
 
 function marcar(tipo) {

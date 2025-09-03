@@ -92,30 +92,39 @@ h1 {
   z-index: 1000;
 }
 
+/* 🔥 Overlay uncanny */
 .overlay-uncanny {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: black;
+  background: rgba(0,0,0,0.9);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 9999;
-  animation: fadeUncanny 1s forwards;
+  animation: fadeIn 0.5s ease;
 }
 
 .uncanny-img {
-  max-width: 50%;
-  max-height: 50%;
+  max-width: 70%;
+  max-height: 70%;
+  border-radius: 20px;
+  box-shadow: 0 0 40px #ff0000;
+  animation: zoomIn 0.5s ease;
 }
 
-@keyframes fadeUncanny {
+@keyframes fadeIn {
   from { opacity: 0; }
-  20% { opacity: 1; }
-  to { opacity: 0; }
+  to { opacity: 1; }
 }
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); }
+  to { transform: scale(1); }
+}
+
 
 .popup.acierto { background: rgba(46, 204, 113, 0.9); }
 .popup.fallo   { background: rgba(231, 76, 60, 0.9); }
