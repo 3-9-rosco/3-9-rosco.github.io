@@ -88,13 +88,13 @@ function mostrarUncanny() {
   overlay.className = "overlay-uncanny";
 
   const img = document.createElement("img");
-  img.src = "/images/joelserio.png"; // asegúrate de tener esta ruta
+  img.src = "joelserio.png"; // asegúrate de tener esta ruta
   img.className = "uncanny-img";
 
   overlay.appendChild(img);
   document.body.appendChild(overlay);
 
-  playSound("sounds/uncanny.mp3");
+  playSound("uncanny.mp3");
 
   setTimeout(() => overlay.remove(), 1000);
 }
