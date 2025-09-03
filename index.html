@@ -2,19 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Rosco Pasapalabra</title>
+  <title>Pasapalabra - Menú Principal</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Rosco Pasapalabra</h1>
-  <div class="rosco" id="rosco"></div>
-  <div class="pregunta" id="pregunta"></div>
-  
-  <div id="controles">
-    <button onclick="marcar('acierto')">✅ Acierto</button>
-    <button onclick="marcar('fallo')">❌ Fallo</button>
-    <button onclick="marcar('pasapalabra')">➡️ Pasapalabra</button>
+  <div class="menu-container">
+    <h1 class="titulo">PASAPALABRA</h1>
+
+    <div class="botones">
+      <a href="rosco1/rosco1.html" class="btn">Rosco 1</a>
+      <a href="rosco2/rosco2.html" class="btn">Rosco 2</a>
+    </div>
   </div>
+
+  <audio id="bg-music" src="sounds/pasapalabra.mp3" loop></audio>
+  <button id="music-toggle" class="music-btn">🔊 Música</button>
 
   <script src="script.js"></script>
 </body>
