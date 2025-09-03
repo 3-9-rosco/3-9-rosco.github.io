@@ -13,14 +13,25 @@ body {
   overflow: hidden;
 }
 
+/* 📌 Contenedor del menú ocupa toda la pantalla */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 8vh; /* espacio proporcional entre título y botones */
+}
+
 /* 🎇 Título estilo Pasapalabra */
 .titulo {
-  font-size: 5rem;
+  font-size: clamp(3rem, 10vw, 8rem); /* escala con pantalla */
   font-weight: bold;
   color: #4db8ff;
   text-shadow: 0 0 20px #1e90ff, 0 0 40px #1e90ff, 0 0 60px #1e90ff;
   animation: glow 2s infinite alternate;
-  margin-bottom: 80px;
+  text-align: center;
 }
 
 @keyframes glow {
@@ -31,18 +42,25 @@ body {
 /* 🎮 Botones principales */
 .botones {
   display: flex;
-  gap: 40px;
+  flex-wrap: wrap;
+  gap: 5vw; /* espacio proporcional */
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
   background: #1e90ff;
   color: white;
-  font-size: 2rem;
-  padding: 20px 40px;
+  font-size: clamp(1.5rem, 3vw, 3rem); /* escala con pantalla */
+  padding: 2vh 4vw;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 0 20px rgba(30,144,255,0.7);
+  flex: 1 1 auto;
+  text-align: center;
+  min-width: 200px;
+  max-width: 400px;
 }
 
 .btn:hover {

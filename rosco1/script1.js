@@ -107,7 +107,7 @@ function marcar(tipo) {
     letraDiv.classList.add("correcta");
     aciertos++;
     mostrarPopup("acierto", "¡Correcto!");
-    playSound("sounds/acierto.mp3");
+    playSound("../sounds/acierto.mp3");
   } else if (tipo === "fallo") {
     letraDiv.classList.add("incorrecta");
     fallos++;
@@ -117,13 +117,13 @@ function marcar(tipo) {
       mostrarUncanny();
     } else {
       mostrarPopup("fallo", "¡Incorrecto!");
-      playSound("sounds/fallo.mp3");
+      playSound("../sounds/fallo.mp3");
     }
 
   } else if (tipo === "pasapalabra") {
     letraDiv.classList.add("pasada");
     mostrarPopup("pasapalabra", "¡Pasapalabra!");
-    playSound("sounds/pasapalabra.mp3");
+    playSound("../sounds/pasapalabra.mp3");
   }
 
   siguiente();
