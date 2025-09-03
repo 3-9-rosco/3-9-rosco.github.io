@@ -69,7 +69,7 @@ function playSound(file) {
   audio.play();
 }
 
-// 🔹 Pop-up animado
+// 🔹 Pop-up animado normal
 function mostrarPopup(tipo, texto) {
   const popup = document.createElement("div");
   popup.className = `popup ${tipo}`;
@@ -80,6 +80,23 @@ function mostrarPopup(tipo, texto) {
   popup.classList.add("fade");
 
   setTimeout(() => popup.remove(), 1000);
+}
+
+// 🔹 Pop-up especial para la E (Fallo)
+function mostrarUncanny() {
+  const overlay = document.createElement("div");
+  overlay.className = "overlay-uncanny";
+
+  const img = document.createElement("img");
+  img.src = "images/joelserio.png"; // asegúrate de tener esta ruta
+  img.className = "uncanny-img";
+
+  overlay.appendChild(img);
+  document.body.appendChild(overlay);
+
+  playSound("sounds/uncanny.mp3");
+
+  setTimeout(() => overlay.remove(), 1000);
 }
 
 function marcar(tipo) {
@@ -94,8 +111,15 @@ function marcar(tipo) {
   } else if (tipo === "fallo") {
     letraDiv.classList.add("incorrecta");
     fallos++;
-    mostrarPopup("fallo", "¡Incorrecto!");
-    playSound("sounds/fallo.mp3");
+
+    if (letra === "E") {
+      // Easter Egg Goku Prowler
+      mostrarUncanny();
+    } else {
+      mostrarPopup("fallo", "¡Incorrecto!");
+      playSound("sounds/fallo.mp3");
+    }
+
   } else if (tipo === "pasapalabra") {
     letraDiv.classList.add("pasada");
     mostrarPopup("pasapalabra", "¡Pasapalabra!");
